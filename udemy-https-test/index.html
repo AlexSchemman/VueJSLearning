@@ -1,0 +1,115 @@
+
+<!--The code will be cleaned later do not worr-->
+
+<!DOCTYPE html>
+<html lang=”en”>
+    <head>
+        <title>Movie search</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Bootstrap Files -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- Bulma Files -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
+        <!-- Vue and Vuetify Files -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    
+        <!-- Page CSS -->
+        <link rel="stylesheet" href="css/page.css">
+
+    </head>
+
+    <body>
+
+
+        <div id="app">
+            <v-app>
+                <v-main v-cloak>
+                    <v-container class="search-cont">
+                        <div class="search-element has-text-centered">
+                            <h3>Movie Search</h3>
+                            <input type="text" class="form-control search-bar my-5" placeholder="Search Movie Title...." id="movieSearchInput"  v-model="movieSearchInput">
+                            <v-btn @click="loadMovies(movieSearchInput)">test button</v-btn>    
+                        </v-container>
+                        <v-container style="background-color: aqua; font-size: small; text-align: left;">
+                            <div> test list to check api getlist </div>
+                            <div v-for="(movie, index) in movieResponse" :key="movie.title">
+                                {{index+1}}.
+                                {{movie.Title}},
+                                {{movie.Year}},
+                                {{movie.Type}}
+                            </div>
+
+                            
+                        </v-container>
+                        <div class="search-output">
+                            <v-container>
+                                <v-layout class="movieList">
+                                    <v-flex  v-for="(movie, index) in movieResponse" :key="movie.title">
+                                        <div class="movie-card" @click="cardClick(index)">
+                                            <v-hover v-slot:default="{ hover }">
+                                                <v-card
+                                                  :elevation="hover ? 15 : 3"
+                                                  :class="{ 'on-hover': hover }"
+                                                >
+                                            <v-card-title class="has-text-left"> <!-- Required Transition -->
+                                              {{movie.Title}}
+                                            </v-card-title>
+                                            <v-img :src="movie.Poster" 
+                                                    contain/></v-img>
+                                            <v-card-text v-if ="hover"> <!-- Required Transition -->
+                                                {{movie.Year}}
+                                            </v-card-text>
+                                            </v-card>
+                                            </v-hover>
+
+                                            
+                                        </div>
+                                    </v-flex>
+                                </v-layout>
+
+                            </v-container>
+                        </div>
+
+                        <v-container style="background-color: aqua; font-size: small; text-align: left;">
+                            <div v-if ="!FocusDataVisible">NOTE: If you see nothing click a movie card</div>
+                            <div class="Movie_details" v-if ="FocusDataVisible"> 
+                                <div> Movie Data : </div>   
+                                <div class="Movie_details_title">
+                                {{movieFocusData.Title}} ({{movieFocusData.Year}})
+                                </div>
+                                <v-img :src="movieFocusData.Poster"></v-img>
+                                <div class="Movie_details_short pure-text"> 
+Rating : {{movieFocusData.Rated}}
+Runtime : {{movieFocusData.Runtime}}
+Language : {{movieFocusData.Language}}
+Genre : {{movieFocusData.Genre}}
+Director : {{movieFocusData.Director}}
+Cast : {{movieFocusData.Actors}}
+Plot : {{movieFocusData.Plot}}
+                                </div>
+                            </div>
+
+                    </div>
+                </v-main>
+            </v-app>
+        </div>
+
+                
+        <!-- Vuetify Files -->
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>    
+        
+        <!-- Bootstrap Files -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script> axios = require('axios');</script>
+        <!-- Page JS -->
+        <script src="js/page.js"></script>
+    </body>
+</html>

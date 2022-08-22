@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="src/main.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Component test and Forms test</h1>
+    </header>
+    <div id="app">
+      <main-app @child-message="capturedMessage"></main-app>
+      <form v-if="this.dataIn">
+        <h1>Submitted Data :</h1>
+        <div v-if="userName">
+          <label>Your Name : {{userName}}</label>
+        </div>
+        <div v-if="age">
+          <label>Your Age (Years) : {{age}}</label>
+        </div>
+        <div v-if="referrer">
+          <label>How did you hear about us?: {{referrer}}</label>
+        </div>
+        <div v-if="(interest[0].interestNews)||(interest[1].interestTutorials)||(interest[2].interestNothing)">
+          <label>What are you interested in?: 
+          <ul style="margin: 0;">
+            <li v-if="interest[0].interestNews&&(!interest[2].interestNothing)">News</li>
+            <li v-if="interest[1].interestTutorials&&(!interest[2].interestNothing)">Tutorials</li>
+            <li v-if="interest[2].interestNothing">Nothing</li> </label>
+          </ul>
+        </div>
+        <div v-if="how">
+          <label>How do you learn?: <br> {{how}}</label>
+        </div>
+        <div>
+          <button type="button" id="printButton">Print</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

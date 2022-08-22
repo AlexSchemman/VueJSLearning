@@ -1,0 +1,69 @@
+
+
+/*The code will be cleaned later do not worry*/
+
+.alignleft {
+	float: left;
+    font-size: 150%;
+}
+.alignright {
+	float: right;
+
+}
+
+.search-cont {
+    margin-top:2%
+}
+
+.search-element {
+    font-family:'Times New Roman', Times, serif;
+    font-size: 200%;
+    color: black;
+}
+
+.search-bar {
+    color:black;
+}
+
+.movie-card {
+    padding: 5%;
+}
+
+.movieList {
+    overflow-x: auto;
+}
+
+.pure-text {
+    white-space: pre-wrap;
+}
+
+
+.v-image {
+    width: 200px;
+}
+
+
+.v-card__title {
+    align-items: left;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 50%;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    letter-spacing: .0125em;
+    line-height: 2rem;
+    word-break: break-word;
+}
+
+
+.pure-text {
+    white-space: pre-wrap;
+}
+
+.v-card {
+    transition: opacity .4s ease-in-out;
+  }
+  
+.v-card:not(.on-hover) {
+    opacity: 0.9;
+   }
