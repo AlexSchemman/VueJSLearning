@@ -31,10 +31,10 @@
                         <div class="search-element has-text-centered">
                             <h3>Movie Search</h3>
                             <input type="text" class="form-control search-bar my-5" placeholder="Search Movie Title...." id="movieSearchInput"  v-model="movieSearchInput">
-                            <v-btn @click="loadMovies(movieSearchInput)">test button</v-btn>    
+                            <v-btn @click="loadMovies(movieSearchInput)">Search</v-btn>    
                         </v-container>
                         <v-container style="background-color: aqua; font-size: small; text-align: left;">
-                            <div> test list to check api getlist </div>
+                            <!-- <div> test list to check api getlist </div> -->
                             <div v-for="(movie, index) in movieResponse" :key="movie.title">
                                 {{index+1}}.
                                 {{movie.Title}},
